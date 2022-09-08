@@ -13,61 +13,71 @@ void main() {
 
   group('Test default value or null when variable is unknown', () {
     test(
-        'Should return an empty string when the enviroment variable is not found and no default is given',
-        () {
+        'Should return an empty string '
+        'when the enviroment no variable is found nor a default is given', () {
       expect(EnvVariables.fromEnvironment('unknown-variable'), '');
     });
 
-    test('fromEnvironmentOrNull should return null when the enviroment variable is not found', () {
+    test(
+        'fromEnvironmentOrNull should return null '
+        'when the enviroment variable is not found', () {
       expect(EnvVariables.fromEnvironmentOrNull('unknown-variable'), isNull);
     });
 
-    test('Should return the given default when the enviroment variable is not found', () {
-      expect(EnvVariables.fromEnvironment('var0', defaultValue: defautlValue), defautlValue);
+    test(
+        'Should return the given default when '
+        'the enviroment variable is not found', () {
+      expect(EnvVariables.fromEnvironment('var0', defaultValue: defautlValue),
+          defautlValue);
     });
   });
 
   group('Test when with dart --define', () {
     test(
-        'Should return the --define value when dart command line is provided, with or without default.',
-        () {
+        'Should return the --define value '
+        'when dart command line is provided, with or without default.', () {
       expect(EnvVariables.fromEnvironment('var1'), dartDefinedVar1);
-      expect(EnvVariables.fromEnvironment('var1', defaultValue: 'otherValue'), dartDefinedVar1);
+      expect(EnvVariables.fromEnvironment('var1', defaultValue: 'otherValue'),
+          dartDefinedVar1);
     });
 
     test(
-        'fromEnvironmentOrNull should return the --define value when dart command line is provided, with or without default.',
-        () {
+        'fromEnvironmentOrNull should return the --define value '
+        'when dart command line is provided, with or without default.', () {
       expect(EnvVariables.fromEnvironmentOrNull('var1'), dartDefinedVar1);
     });
   });
 
   group('Test when with dart --define and platform environment', () {
     test(
-        'Should return the --define value when dart command line is provided over the same platform variable, with or without default.',
-        () {
+        'Should return the --define value '
+        'when dart command line is provided over the same platform variable, '
+        'with or without default.', () {
       expect(EnvVariables.fromEnvironment('var2'), dartDefinedVar2);
-      expect(EnvVariables.fromEnvironment('var2', defaultValue: 'otherValue'), dartDefinedVar2);
+      expect(EnvVariables.fromEnvironment('var2', defaultValue: 'otherValue'),
+          dartDefinedVar2);
     });
 
     test(
-        'fromEnvironmentOrNull should return the --define value when dart command line is provided over the same platform variable, with or without default.',
-        () {
+        'fromEnvironmentOrNull should return the --define value '
+        'when dart command line is provided over the same platform variable, '
+        'with or without default.', () {
       expect(EnvVariables.fromEnvironmentOrNull('var2'), dartDefinedVar2);
     });
   });
 
   group('Test when with only platform environment', () {
     test(
-        'Should return the platform variable when not defined in dart command line, with or without default.',
-        () {
+        'Should return the platform variable '
+        'when not defined in dart command line, with or without default.', () {
       expect(EnvVariables.fromEnvironment('var3'), platformVar3);
-      expect(EnvVariables.fromEnvironment('var3', defaultValue: 'otherValue'), platformVar3);
+      expect(EnvVariables.fromEnvironment('var3', defaultValue: 'otherValue'),
+          platformVar3);
     });
 
     test(
-        'Should return the platform variable when not defined in dart command line, with or without default.',
-        () {
+        'Should return the platform variable '
+        'when not defined in dart command line, with or without default.', () {
       expect(EnvVariables.fromEnvironmentOrNull('var3'), platformVar3);
     });
   });

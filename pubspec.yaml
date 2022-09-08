@@ -2,7 +2,7 @@ name: env_variables
 description: Access Environment Variables defined by dart command line or the platform environment.
 homepage: https://github.com/cc-nogueira/env_variables
 
-version: 1.0.0
+version: 1.0.1
 
 environment:
   sdk: '>=2.16.0 <3.0.0'
